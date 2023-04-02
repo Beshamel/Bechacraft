@@ -1,0 +1,12 @@
+{
+  "type": "bechacraft:sap_extracting",
+  "ingredients": [
+    {
+      "item": "minecraft:dark_oak_log"
+    }
+  ],
+  "output": {
+    "item": "bechacraft:wood_sap"
+  },
+  "fill": 5
+}

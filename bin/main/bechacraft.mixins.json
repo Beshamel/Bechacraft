@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "bapt.bechacraft.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "ModEntityDataSaverMixin",
+    "ArgumentTypesMixin",
+    "ArgumentTypesInvoker",
+    "PlayerEntityMixin",
+    "LivingEntityMixin"
+  ],
+  "client": [
+    "TitleScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

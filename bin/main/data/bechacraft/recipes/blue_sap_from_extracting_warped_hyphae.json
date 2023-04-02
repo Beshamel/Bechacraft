@@ -1,0 +1,12 @@
+{
+  "type": "bechacraft:sap_extracting",
+  "ingredients": [
+    {
+      "item": "minecraft:warped_hyphae"
+    }
+  ],
+  "output": {
+    "item": "bechacraft:blue_sap"
+  },
+  "fill": 4
+}

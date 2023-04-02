@@ -1,0 +1,12 @@
+{
+  "type": "bechacraft:sap_extracting",
+  "ingredients": [
+    {
+      "item": "minecraft:birch_wood"
+    }
+  ],
+  "output": {
+    "item": "bechacraft:wood_sap"
+  },
+  "fill": 5
+}

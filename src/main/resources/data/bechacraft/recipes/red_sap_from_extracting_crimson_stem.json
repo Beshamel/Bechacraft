@@ -1,0 +1,12 @@
+{
+  "type": "bechacraft:sap_extracting",
+  "ingredients": [
+    {
+      "item": "minecraft:crimson_stem"
+    }
+  ],
+  "output": {
+    "item": "bechacraft:red_sap"
+  },
+  "fill": 4
+}

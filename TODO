@@ -1,0 +1,39 @@
+GUI :
+  - Make the vocation GUI
+    - Graphical design
+    - Keybind
+    - Interface coding
+  - Make the mana GUI
+    - Graphical design
+    - Interface coding
+  - Think about custom GUI background designs
+
+Vocations :
+  - Make unimplemented vocations not appear in command suggestions
+  - Update the vocation tree with latest ideas
+  - Start implementing simple effects like the farmer's passive
+
+Game elements :
+  - Add custom crops
+  - Add custom weapons
+  - Add the custom block designs
+  - Add the End biome and petrified tree generation and wood family
+
+Visual effects :
+  - Add particle effects on some interactions
+
+Game design :
+  - Organize the ideas file and merge third parties suggestions
+    - Discord
+      - Tristan (MP)
+      - Guilhem (TIMBG)
+    - Phone
+  - Add effects to empty vocations
+  - Think about the cultist vocation tree
+  - Add value to some items like copper, diamonds, vegetables...
+
+Troubleshooting :
+  - Assign vocation at login
+
+Translation :
+  

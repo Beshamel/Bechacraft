@@ -1,0 +1,130 @@
+---- Minecraft Crash Report ----
+// This doesn't make any sense!
+
+Time: 2023-04-02 11:50:40
+Description: Exception in server tick loop
+
+java.lang.ExceptionInInitializerError
+	at bapt.bechacraft.vocation.Vocation.fromName(Vocation.java:127)
+	at bapt.bechacraft.vocation.Vocation$VocationData.read(Vocation.java:186)
+	at bapt.bechacraft.vocation.Vocation$VocationData.read(Vocation.java:191)
+	at bapt.bechacraft.vocation.Vocation$VocationData.get(Vocation.java:212)
+	at bapt.bechacraft.vocation.Vocation.get(Vocation.java:151)
+	at net.minecraft.entity.player.PlayerEntity.handler$zjn000$bechacraft$injectIncreaseTravelMotionStats(PlayerEntity.java:3114)
+	at net.minecraft.entity.player.PlayerEntity.increaseTravelMotionStats(PlayerEntity.java)
+	at net.minecraft.server.network.ServerPlayNetworkHandler.onPlayerMove(ServerPlayNetworkHandler.java:926)
+	at net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket.apply(PlayerMoveC2SPacket.java:34)
+	at net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket$Full.apply(PlayerMoveC2SPacket.java:22)
+	at net.minecraft.network.NetworkThreadUtils.method_11072(NetworkThreadUtils.java:26)
+	at net.minecraft.server.ServerTask.run(ServerTask.java:22)
+	at net.minecraft.util.thread.ThreadExecutor.executeTask(ThreadExecutor.java:149)
+	at net.minecraft.util.thread.ReentrantThreadExecutor.executeTask(ReentrantThreadExecutor.java:29)
+	at net.minecraft.server.MinecraftServer.executeTask(MinecraftServer.java:761)
+	at net.minecraft.server.MinecraftServer.executeTask(MinecraftServer.java:1747)
+	at net.minecraft.util.thread.ThreadExecutor.runTask(ThreadExecutor.java:126)
+	at net.minecraft.server.MinecraftServer.runOneTask(MinecraftServer.java:746)
+	at net.minecraft.server.MinecraftServer.runTask(MinecraftServer.java:742)
+	at net.minecraft.util.thread.ThreadExecutor.runTasks(ThreadExecutor.java:134)
+	at net.minecraft.server.MinecraftServer.runTasksTillTickEnd(MinecraftServer.java:725)
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:664)
+	at net.minecraft.server.MinecraftServer.method_29739(MinecraftServer.java:289)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.lang.UnsupportedOperationException
+	at java.base/java.util.ImmutableCollections.uoe(ImmutableCollections.java:142)
+	at java.base/java.util.ImmutableCollections$AbstractImmutableMap.put(ImmutableCollections.java:1072)
+	at bapt.bechacraft.vocation.Vocation$VocationBuilder.addAttributeModifier(Vocation.java:246)
+	at bapt.bechacraft.vocation.Vocations.<clinit>(Vocations.java:21)
+	... 24 more
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- System Details --
+Details:
+	Minecraft Version: 1.19.4
+	Minecraft Version ID: 1.19.4
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 17.0.6, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 531373368 bytes (506 MiB) / 1448083456 bytes (1381 MiB) up to 2082471936 bytes (1986 MiB)
+	CPUs: 8
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz
+	Identifier: Intel64 Family 6 Model 142 Stepping 12
+	Microarchitecture: Whiskey Lake
+	Frequency (GHz): 1.99
+	Number of physical packages: 1
+	Number of physical CPUs: 4
+	Number of logical CPUs: 8
+	Graphics card #0 name: Intel(R) UHD Graphics 620
+	Graphics card #0 vendor: Intel Corporation (0x8086)
+	Graphics card #0 VRAM (MB): 1024.00
+	Graphics card #0 deviceId: 0x3ea0
+	Graphics card #0 versionInfo: DriverVersion=27.20.100.8935
+	Memory slot #0 capacity (MB): 4096.00
+	Memory slot #0 clockSpeed (GHz): 2.13
+	Memory slot #0 type: LPDDR3
+	Memory slot #1 capacity (MB): 4096.00
+	Memory slot #1 clockSpeed (GHz): 2.13
+	Memory slot #1 type: LPDDR3
+	Virtual memory max (MB): 20788.86
+	Virtual memory used (MB): 17203.09
+	Swap memory total (MB): 12851.74
+	Swap memory used (MB): 2753.04
+	JVM Flags: 0 total; 
+	Fabric Mods: 
+		bechacraft: Béchacraft 1.0.0
+		fabric-api: Fabric API 0.75.3+1.19.4
+		fabric-api-base: Fabric API Base 0.4.23+9ff28bced8
+		fabric-api-lookup-api-v1: Fabric API Lookup API (v1) 1.6.24+49abcf7ed8
+		fabric-biome-api-v1: Fabric Biome API (v1) 13.0.5+fe9afa9dd8
+		fabric-block-api-v1: Fabric Block API (v1) 1.0.5+e022e5d1d8
+		fabric-blockrenderlayer-v1: Fabric BlockRenderLayer Registration (v1) 1.1.33+c2e6f674d8
+		fabric-client-tags-api-v1: Fabric Client Tags 1.0.14+1134c5b8d8
+		fabric-command-api-v2: Fabric Command API (v2) 2.2.4+ae0966bad8
+		fabric-content-registries-v0: Fabric Content Registries (v0) 3.5.6+ae0966bad8
+		fabric-convention-tags-v1: Fabric Convention Tags 1.3.0+6baaf971d8
+		fabric-crash-report-info-v1: Fabric Crash Report Info (v1) 0.2.14+aeb40ebed8
+		fabric-data-generation-api-v1: Fabric Data Generation API (v1) 11.3.4+5da15ca1d8
+		fabric-dimensions-v1: Fabric Dimensions API (v1) 2.1.44+7f87f8fad8
+		fabric-entity-events-v1: Fabric Entity Events (v1) 1.5.12+e45f7c65d8
+		fabric-events-interaction-v0: Fabric Events Interaction (v0) 0.4.42+a1ccd7bfd8
+		fabric-game-rule-api-v1: Fabric Game Rule API (v1) 1.0.32+a1ccd7bfd8
+		fabric-gametest-api-v1: Fabric Game Test API (v1) 1.2.1+ae0966bad8
+		fabric-item-api-v1: Fabric Item API (v1) 2.1.15+ae0966bad8
+		fabric-item-group-api-v1: Fabric Item Group API (v1) 3.0.2+e45f7c65d8
+		fabric-key-binding-api-v1: Fabric Key Binding API (v1) 1.0.32+c477957ed8
+		fabric-lifecycle-events-v1: Fabric Lifecycle Events (v1) 2.2.14+5da15ca1d8
+		fabric-loot-api-v2: Fabric Loot API (v2) 1.1.24+75e98211d8
+		fabric-message-api-v1: Fabric Message API (v1) 5.1.0+1ee8be40d8
+		fabric-mining-level-api-v1: Fabric Mining Level API (v1) 2.1.36+49abcf7ed8
+		fabric-models-v0: Fabric Models (v0) 0.3.29+11ba9c3bd8
+		fabric-networking-api-v1: Fabric Networking API (v1) 1.2.21+4e68ac5bd8
+		fabric-object-builder-api-v1: Fabric Object Builder API (v1) 7.0.0+63b515f4d8
+		fabric-particles-v1: Fabric Particles (v1) 1.0.22+f1e4495bd8
+		fabric-recipe-api-v1: Fabric Recipe API (v1) 1.0.5+a1ccd7bfd8
+		fabric-registry-sync-v0: Fabric Registry Sync (v0) 2.1.1+a383ab97d8
+		fabric-renderer-api-v1: Fabric Renderer API (v1) 2.2.4+81e8c576d8
+		fabric-renderer-indigo: Fabric Renderer - Indigo 1.1.0+81e8c576d8
+		fabric-rendering-data-attachment-v1: Fabric Rendering Data Attachment (v1) 0.3.27+afca2f3ed8
+		fabric-rendering-fluids-v1: Fabric Rendering Fluids (v1) 3.0.20+f1e4495bd8
+		fabric-rendering-v1: Fabric Rendering (v1) 2.0.2+ae0966bad8
+		fabric-resource-conditions-api-v1: Fabric Resource Conditions API (v1) 2.3.0+e6c7d4eed8
+		fabric-resource-loader-v0: Fabric Resource Loader (v0) 0.10.9+711cde8ad8
+		fabric-screen-api-v1: Fabric Screen API (v1) 1.0.44+8c25edb4d8
+		fabric-screen-handler-api-v1: Fabric Screen Handler API (v1) 1.3.17+5da15ca1d8
+		fabric-sound-api-v1: Fabric Sound API (v1) 1.0.8+75e98211d8
+		fabric-transfer-api-v1: Fabric Transfer API (v1) 3.0.1+9003cbe9d8
+		fabric-transitive-access-wideners-v1: Fabric Transitive Access Wideners (v1) 3.0.2+63b515f4d8
+		fabricloader: Fabric Loader 0.14.18
+		java: Java HotSpot(TM) 64-Bit Server VM 17
+		minecraft: Minecraft 1.19.4
+	Server Running: true
+	Player Count: 1 / 8; [ServerPlayerEntity['Player597'/140, l='ServerLevel[More tests]', x=-8.50, y=71.00, z=-5.50]]
+	Data Packs: vanilla, fabric
+	Enabled Feature Flags: minecraft:vanilla
+	World Generation: Stable
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'fabric'; Server brand changed to 'fabric'
+	Launched Version: Fabric

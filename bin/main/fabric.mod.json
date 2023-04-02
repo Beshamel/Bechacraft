@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "bechacraft",
+  "version": "${version}",
+
+  "name": "Béchacraft",
+  "description": "CA c'est un beau mod",
+  "authors": [
+    "Bapt",
+    "Bécha",
+    "Anonymous doggo"
+  ],
+  "contact": {
+    "sources": "https://github.com/Beshamel/Bechacraft"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/bechacraft/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "bapt.bechacraft.Bechacraft"
+    ],
+    "client": [
+      "bapt.bechacraft.BechacraftClient"
+    ],
+    "fabric-datagen": [
+      "bapt.bechacraft.BechacraftDataGenerator"
+    ]
+  },
+  "mixins": [
+    "bechacraft.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.18",
+    "fabric-api": "*",
+    "minecraft": "~1.19.4",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

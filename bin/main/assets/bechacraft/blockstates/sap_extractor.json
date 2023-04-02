@@ -1,0 +1,337 @@
+{
+  "variants": {
+    "facing=east,lit=false,filling=0": {
+      "model": "bechacraft:block/sap_extractor_shut_empty",
+      "y": 90
+    },
+    "facing=east,lit=false,filling=1,sap_type=0": {
+      "model": "bechacraft:block/sap_extractor_shut_empty",
+      "y": 90
+    },
+    "facing=east,lit=false,filling=2,sap_type=0": {
+      "model": "bechacraft:block/sap_extractor_shut_empty",
+      "y": 90
+    },
+    "facing=east,lit=false,filling=1,sap_type=1": {
+      "model": "bechacraft:block/sap_extractor_shut_filling_wood",
+      "y": 90
+    },
+    "facing=east,lit=false,filling=1,sap_type=2": {
+      "model": "bechacraft:block/sap_extractor_shut_filling_red",
+      "y": 90
+    },
+    "facing=east,lit=false,filling=1,sap_type=3": {
+      "model": "bechacraft:block/sap_extractor_shut_filling_blue",
+      "y": 90
+    },
+    "facing=east,lit=false,filling=1,sap_type=4": {
+      "model": "bechacraft:block/sap_extractor_shut_filling_chorus",
+      "y": 90
+    },
+    "facing=east,lit=false,filling=2,sap_type=1": {
+      "model": "bechacraft:block/sap_extractor_shut_full_wood",
+      "y": 90
+    },
+    "facing=east,lit=false,filling=2,sap_type=2": {
+      "model": "bechacraft:block/sap_extractor_shut_full_red",
+      "y": 90
+    },
+    "facing=east,lit=false,filling=2,sap_type=3": {
+      "model": "bechacraft:block/sap_extractor_shut_full_blue",
+      "y": 90
+    },
+    "facing=east,lit=false,filling=2,sap_type=4": {
+      "model": "bechacraft:block/sap_extractor_shut_full_chorus",
+      "y": 90
+    },
+    "facing=east,lit=true,filling=0": {
+      "model": "bechacraft:block/sap_extractor_lit_empty",
+      "y": 90
+    },
+    "facing=east,lit=true,filling=1,sap_type=0": {
+      "model": "bechacraft:block/sap_extractor_lit_empty",
+      "y": 90
+    },
+    "facing=east,lit=true,filling=2,sap_type=0": {
+      "model": "bechacraft:block/sap_extractor_lit_empty",
+      "y": 90
+    },
+    "facing=east,lit=true,filling=1,sap_type=1": {
+      "model": "bechacraft:block/sap_extractor_lit_filling_wood",
+      "y": 90
+    },
+    "facing=east,lit=true,filling=1,sap_type=2": {
+      "model": "bechacraft:block/sap_extractor_lit_filling_red",
+      "y": 90
+    },
+    "facing=east,lit=true,filling=1,sap_type=3": {
+      "model": "bechacraft:block/sap_extractor_lit_filling_blue",
+      "y": 90
+    },
+    "facing=east,lit=true,filling=1,sap_type=4": {
+      "model": "bechacraft:block/sap_extractor_lit_filling_chorus",
+      "y": 90
+    },
+    "facing=east,lit=true,filling=2,sap_type=1": {
+      "model": "bechacraft:block/sap_extractor_lit_full_wood",
+      "y": 90
+    },
+    "facing=east,lit=true,filling=2,sap_type=2": {
+      "model": "bechacraft:block/sap_extractor_lit_full_red",
+      "y": 90
+    },
+    "facing=east,lit=true,filling=2,sap_type=3": {
+      "model": "bechacraft:block/sap_extractor_lit_full_blue",
+      "y": 90
+    },
+    "facing=east,lit=true,filling=2,sap_type=4": {
+      "model": "bechacraft:block/sap_extractor_lit_full_chorus",
+      "y": 90
+    },
+
+    "facing=north,lit=false,filling=0": {
+      "model": "bechacraft:block/sap_extractor_shut_empty"
+    },
+    "facing=north,lit=false,filling=1,sap_type=0": {
+      "model": "bechacraft:block/sap_extractor_shut_empty"
+    },
+    "facing=north,lit=false,filling=2,sap_type=0": {
+      "model": "bechacraft:block/sap_extractor_shut_empty"
+    },
+    "facing=north,lit=false,filling=1,sap_type=1": {
+      "model": "bechacraft:block/sap_extractor_shut_filling_wood"
+    },
+    "facing=north,lit=false,filling=1,sap_type=2": {
+      "model": "bechacraft:block/sap_extractor_shut_filling_red"
+    },
+    "facing=north,lit=false,filling=1,sap_type=3": {
+      "model": "bechacraft:block/sap_extractor_shut_filling_blue"
+    },
+    "facing=north,lit=false,filling=1,sap_type=4": {
+      "model": "bechacraft:block/sap_extractor_shut_filling_chorus"
+    },
+    "facing=north,lit=false,filling=2,sap_type=1": {
+      "model": "bechacraft:block/sap_extractor_shut_full_wood"
+    },
+    "facing=north,lit=false,filling=2,sap_type=2": {
+      "model": "bechacraft:block/sap_extractor_shut_full_red"
+    },
+    "facing=north,lit=false,filling=2,sap_type=3": {
+      "model": "bechacraft:block/sap_extractor_shut_full_blue"
+    },
+    "facing=north,lit=false,filling=2,sap_type=4": {
+      "model": "bechacraft:block/sap_extractor_shut_full_chorus"
+    },
+    "facing=north,lit=true,filling=0": {
+      "model": "bechacraft:block/sap_extractor_lit_empty"
+    },
+    "facing=north,lit=true,filling=1,sap_type=0": {
+      "model": "bechacraft:block/sap_extractor_lit_empty"
+    },
+    "facing=north,lit=true,filling=2,sap_type=0": {
+      "model": "bechacraft:block/sap_extractor_lit_empty"
+    },
+    "facing=north,lit=true,filling=1,sap_type=1": {
+      "model": "bechacraft:block/sap_extractor_lit_filling_wood"
+    },
+    "facing=north,lit=true,filling=1,sap_type=2": {
+      "model": "bechacraft:block/sap_extractor_lit_filling_red"
+    },
+    "facing=north,lit=true,filling=1,sap_type=3": {
+      "model": "bechacraft:block/sap_extractor_lit_filling_blue"
+    },
+    "facing=north,lit=true,filling=1,sap_type=4": {
+      "model": "bechacraft:block/sap_extractor_lit_filling_chorus"
+    },
+    "facing=north,lit=true,filling=2,sap_type=1": {
+      "model": "bechacraft:block/sap_extractor_lit_full_wood"
+    },
+    "facing=north,lit=true,filling=2,sap_type=2": {
+      "model": "bechacraft:block/sap_extractor_lit_full_red"
+    },
+    "facing=north,lit=true,filling=2,sap_type=3": {
+      "model": "bechacraft:block/sap_extractor_lit_full_blue"
+    },
+    "facing=north,lit=true,filling=2,sap_type=4": {
+      "model": "bechacraft:block/sap_extractor_lit_full_chorus"
+    },
+    
+    "facing=south,lit=false,filling=0": {
+      "model": "bechacraft:block/sap_extractor_shut_empty",
+      "y": 180
+    },
+    "facing=south,lit=false,filling=1,sap_type=0": {
+      "model": "bechacraft:block/sap_extractor_shut_empty",
+      "y": 180
+    },
+    "facing=south,lit=false,filling=2,sap_type=0": {
+      "model": "bechacraft:block/sap_extractor_shut_empty",
+      "y": 180
+    },
+    "facing=south,lit=false,filling=1,sap_type=1": {
+      "model": "bechacraft:block/sap_extractor_shut_filling_wood",
+      "y": 180
+    },
+    "facing=south,lit=false,filling=1,sap_type=2": {
+      "model": "bechacraft:block/sap_extractor_shut_filling_red",
+      "y": 180
+    },
+    "facing=south,lit=false,filling=1,sap_type=3": {
+      "model": "bechacraft:block/sap_extractor_shut_filling_blue",
+      "y": 180
+    },
+    "facing=south,lit=false,filling=1,sap_type=4": {
+      "model": "bechacraft:block/sap_extractor_shut_filling_chorus",
+      "y": 180
+    },
+    "facing=south,lit=false,filling=2,sap_type=1": {
+      "model": "bechacraft:block/sap_extractor_shut_full_wood",
+      "y": 180
+    },
+    "facing=south,lit=false,filling=2,sap_type=2": {
+      "model": "bechacraft:block/sap_extractor_shut_full_red",
+      "y": 180
+    },
+    "facing=south,lit=false,filling=2,sap_type=3": {
+      "model": "bechacraft:block/sap_extractor_shut_full_blue",
+      "y": 180
+    },
+    "facing=south,lit=false,filling=2,sap_type=4": {
+      "model": "bechacraft:block/sap_extractor_shut_full_chorus",
+      "y": 180
+    },
+    "facing=south,lit=true,filling=0": {
+      "model": "bechacraft:block/sap_extractor_lit_empty",
+      "y": 180
+    },
+    "facing=south,lit=true,filling=1,sap_type=0": {
+      "model": "bechacraft:block/sap_extractor_lit_empty",
+      "y": 180
+    },
+    "facing=south,lit=true,filling=2,sap_type=0": {
+      "model": "bechacraft:block/sap_extractor_lit_empty",
+      "y": 180
+    },
+    "facing=south,lit=true,filling=1,sap_type=1": {
+      "model": "bechacraft:block/sap_extractor_lit_filling_wood",
+      "y": 180
+    },
+    "facing=south,lit=true,filling=1,sap_type=2": {
+      "model": "bechacraft:block/sap_extractor_lit_filling_red",
+      "y": 180
+    },
+    "facing=south,lit=true,filling=1,sap_type=3": {
+      "model": "bechacraft:block/sap_extractor_lit_filling_blue",
+      "y": 180
+    },
+    "facing=south,lit=true,filling=1,sap_type=4": {
+      "model": "bechacraft:block/sap_extractor_lit_filling_chorus",
+      "y": 180
+    },
+    "facing=south,lit=true,filling=2,sap_type=1": {
+      "model": "bechacraft:block/sap_extractor_lit_full_wood",
+      "y": 180
+    },
+    "facing=south,lit=true,filling=2,sap_type=2": {
+      "model": "bechacraft:block/sap_extractor_lit_full_red",
+      "y": 180
+    },
+    "facing=south,lit=true,filling=2,sap_type=3": {
+      "model": "bechacraft:block/sap_extractor_lit_full_blue",
+      "y": 180
+    },
+    "facing=south,lit=true,filling=2,sap_type=4": {
+      "model": "bechacraft:block/sap_extractor_lit_full_chorus",
+      "y": 180
+    },
+    
+    "facing=west,lit=false,filling=0": {
+      "model": "bechacraft:block/sap_extractor_shut_empty",
+      "y": 270
+    },
+    "facing=west,lit=false,filling=1,sap_type=0": {
+      "model": "bechacraft:block/sap_extractor_shut_empty",
+      "y": 270
+    },
+    "facing=west,lit=false,filling=2,sap_type=0": {
+      "model": "bechacraft:block/sap_extractor_shut_empty",
+      "y": 270
+    },
+    "facing=west,lit=false,filling=1,sap_type=1": {
+      "model": "bechacraft:block/sap_extractor_shut_filling_wood",
+      "y": 270
+    },
+    "facing=west,lit=false,filling=1,sap_type=2": {
+      "model": "bechacraft:block/sap_extractor_shut_filling_red",
+      "y": 270
+    },
+    "facing=west,lit=false,filling=1,sap_type=3": {
+      "model": "bechacraft:block/sap_extractor_shut_filling_blue",
+      "y": 270
+    },
+    "facing=west,lit=false,filling=1,sap_type=4": {
+      "model": "bechacraft:block/sap_extractor_shut_filling_chorus",
+      "y": 270
+    },
+    "facing=west,lit=false,filling=2,sap_type=1": {
+      "model": "bechacraft:block/sap_extractor_shut_full_wood",
+      "y": 270
+    },
+    "facing=west,lit=false,filling=2,sap_type=2": {
+      "model": "bechacraft:block/sap_extractor_shut_full_red",
+      "y": 270
+    },
+    "facing=west,lit=false,filling=2,sap_type=3": {
+      "model": "bechacraft:block/sap_extractor_shut_full_blue",
+      "y": 270
+    },
+    "facing=west,lit=false,filling=2,sap_type=4": {
+      "model": "bechacraft:block/sap_extractor_shut_full_chorus",
+      "y": 270
+    },
+    "facing=west,lit=true,filling=0": {
+      "model": "bechacraft:block/sap_extractor_lit_empty",
+      "y": 270
+    },
+    "facing=west,lit=true,filling=1,sap_type=0": {
+      "model": "bechacraft:block/sap_extractor_lit_empty",
+      "y": 270
+    },
+    "facing=west,lit=true,filling=2,sap_type=0": {
+      "model": "bechacraft:block/sap_extractor_lit_empty",
+      "y": 270
+    },
+    "facing=west,lit=true,filling=1,sap_type=1": {
+      "model": "bechacraft:block/sap_extractor_lit_filling_wood",
+      "y": 270
+    },
+    "facing=west,lit=true,filling=1,sap_type=2": {
+      "model": "bechacraft:block/sap_extractor_lit_filling_red",
+      "y": 270
+    },
+    "facing=west,lit=true,filling=1,sap_type=3": {
+      "model": "bechacraft:block/sap_extractor_lit_filling_blue",
+      "y": 270
+    },
+    "facing=west,lit=true,filling=1,sap_type=4": {
+      "model": "bechacraft:block/sap_extractor_lit_filling_chorus",
+      "y": 270
+    },
+    "facing=west,lit=true,filling=2,sap_type=1": {
+      "model": "bechacraft:block/sap_extractor_lit_full_wood",
+      "y": 270
+    },
+    "facing=west,lit=true,filling=2,sap_type=2": {
+      "model": "bechacraft:block/sap_extractor_lit_full_red",
+      "y": 270
+    },
+    "facing=west,lit=true,filling=2,sap_type=3": {
+      "model": "bechacraft:block/sap_extractor_lit_full_blue",
+      "y": 270
+    },
+    "facing=west,lit=true,filling=2,sap_type=4": {
+      "model": "bechacraft:block/sap_extractor_lit_full_chorus",
+      "y": 270
+    }
+  }
+}
