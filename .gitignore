@@ -5,3 +5,5 @@
 build
 bin
 run
+.vscode
+gradle
