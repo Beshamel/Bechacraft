@@ -25,13 +25,13 @@ import net.minecraft.util.Identifier;
 
 public class Vocation {
 
-    //private static final String ICON_PATH_PREFIX = "textures/vocation/";
+    private static final String ICON_PATH_PREFIX = "textures/vocation/";
 
     private final boolean implemented;
 
     private final String name;
     private final Identifier id;
-    //private Identifier iconId;
+    private Identifier iconId;
     private final Vocation parent;
     private final Map<EntityAttribute, EntityAttributeModifier> attributeModifiers;
     private String translationKey;
@@ -43,7 +43,7 @@ public class Vocation {
     private Vocation(String name, Vocation parent, boolean implemented, Map<EntityAttribute, EntityAttributeModifier> attributeModifiers) {
         this.implemented = implemented;
         this.name = name;
-        //this.iconId = new Identifier(Bechacraft.MOD_ID, ICON_PATH_PREFIX + name + ".png");
+        this.iconId = new Identifier(Bechacraft.MOD_ID, ICON_PATH_PREFIX + name + ".png");
         this.parent = parent;
         this.id = new Identifier(Bechacraft.MOD_ID, name);
         this.translationKey = createTranslationKey(name);
@@ -93,6 +93,10 @@ public class Vocation {
         return id;
     }
 
+    public Identifier getIcon() {
+        return iconId;
+    }
+
     public Map<EntityAttribute, EntityAttributeModifier> getAttributeModifiers() {
         return this.attributeModifiers;
     }
@@ -117,6 +121,10 @@ public class Vocation {
 
     public boolean inherits(Vocation vocation) {
         return this == vocation || (parent != null && parent.inherits(vocation));
+    }
+
+    public int getTier() {
+        return parent == null ? 1 : (parent.getTier() + 1);
     }
 
     public static void set(PlayerEntity player, Vocation vocation) {

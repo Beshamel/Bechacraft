@@ -9,6 +9,10 @@ A.1.0 :
     - Citrine and citrine ores
   - Implemented the Fighter and Traveler vocations
 
-A.1.0.1 :
+A.1.1 :
   - The fighter now takes normal damage from potion effects, drowning and the void
-  - Impemented the Brute vocation
+  - Implemented the Brute vocation
+
+A.1.2
+  - Added some vocation icons
+  - The vocation's icon now displays next to the hotbar

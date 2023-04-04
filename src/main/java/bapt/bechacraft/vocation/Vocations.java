@@ -38,7 +38,6 @@ public class Vocations {
     public static final Vocation MARKSMAN = createAndRegisterVocation("marksman", FIGHTER);
     public static final Vocation WARRIOR = createAndRegisterVocation("warrior", FIGHTER);
     public static final Vocation HUNTER = createAndRegisterVocation("hunter", FIGHTER);
-    public static final Vocation BRUTE = register(new VocationBuilder("brute", WARRIOR).addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, "brute_attack_modifier", 1, Operation.MULTIPLY_TOTAL).inheritsModifiers(false).build());
     public static final Vocation ASSASSIN = createAndRegisterVocation("assassin", FIGHTER);
     public static final Vocation WIZARD = createAndRegisterVocation("wizard", MAGICIAN);
     public static final Vocation CHARMER = createAndRegisterVocation("charmer", MAGICIAN);
@@ -54,6 +53,7 @@ public class Vocations {
     public static final Vocation ATLANT = createAndRegisterVocation("sailor", SAILOR);
     public static final Vocation FAIRY = createAndRegisterVocation("fairy", CHARMER);
     public static final Vocation TRADER = createAndRegisterVocation("trader", MERCHANT);
+    public static final Vocation BRUTE = register(new VocationBuilder("brute", WARRIOR).addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, "brute_attack_modifier", 1, Operation.MULTIPLY_TOTAL).inheritsModifiers(false).build());
     
     private static Vocation register(Vocation vocation) {
         entries.put(vocation.getId(), vocation);
