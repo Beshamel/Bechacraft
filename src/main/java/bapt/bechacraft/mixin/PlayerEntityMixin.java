@@ -1,5 +1,7 @@
 package bapt.bechacraft.mixin;
 
+import java.util.Random;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -26,7 +28,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         PlayerEntity player = (PlayerEntity) (Object) this;
         super.jump();
         player.incrementStat(Stats.JUMP);
-        if(!Vocation.get(player).inherits(Vocations.TRAVELER)){
+        if(!Vocation.get(player).inherits(Vocations.TRAVELER) || new Random().nextInt(5) == 0){
             if (player.isSprinting()) {
                 player.addExhaustion(0.2f);
             } else {
@@ -40,6 +42,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     public void injectIncreaseTravelMotionStats(double dx, double dy, double dz, CallbackInfo ci) {
         PlayerEntity player = (PlayerEntity) (Object) this;
         boolean traveler = Vocation.get(player).inherits(Vocations.TRAVELER);
+        boolean b = new Random().nextInt(5) == 0;
         if (this.hasVehicle()) {
             return;
         }
@@ -70,7 +73,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
             if (i > 0) {
                 if (this.isSprinting()) {
                     player.increaseStat(Stats.SPRINT_ONE_CM, i);
-                    if(!traveler)
+                    if(b || !traveler)
                         player.addExhaustion(0.1f * (float)i * 0.01f);
                 } else if (this.isInSneakingPose()) {
                     player.increaseStat(Stats.CROUCH_ONE_CM, i);

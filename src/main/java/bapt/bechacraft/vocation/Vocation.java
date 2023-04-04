@@ -15,7 +15,6 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -51,31 +50,22 @@ public class Vocation {
         this.attributeModifiers = attributeModifiers;
     }
 
-    public void onStart(PlayerEntity player, Vocation oldVocation) {
-        /*if(inherits(Vocations.TRAVELER) && !oldVocation.inherits(Vocations.TRAVELER)) {
-            player.addStatusEffect(new StatusEffectInstance(ModStatusEffects.TRAVELERS_SWIFTNESS, StatusEffectInstance.INFINITE, 0, true, true, true));
-        }
-        if(inherits(Vocations.FIGHTER) && !oldVocation.inherits(Vocations.FIGHTER)) {
-            player.addStatusEffect(new StatusEffectInstance(ModStatusEffects.FIGHTERS_TOUGHNESS, StatusEffectInstance.INFINITE, 0));
-        }*/
+    public void onApply(PlayerEntity player) {
         for (Map.Entry<EntityAttribute, EntityAttributeModifier> entry : this.attributeModifiers.entrySet()) {
-            EntityAttributeInstance entityAttributeInstance = player.getAttributes().getCustomInstance(entry.getKey());
-            if (entityAttributeInstance == null) continue;
-            EntityAttributeModifier entityAttributeModifier = entry.getValue();
-            entityAttributeInstance.removeModifier(entityAttributeModifier);
-            entityAttributeInstance.addPersistentModifier(new EntityAttributeModifier(entityAttributeModifier.getId(), this.getTranslationKey(), entry.getValue().getValue(), entityAttributeModifier.getOperation()));
+            Util.applyModifier(player, entry.getKey(), entry.getValue(), this.getName());
         }
     }
 
-    public void onStop(PlayerEntity player, Vocation newVocation) {
-        /*if(inherits(Vocations.TRAVELER) && !newVocation.inherits(Vocations.TRAVELER)) {
-            player.removeStatusEffect(ModStatusEffects.TRAVELERS_SWIFTNESS);
-        }*/
+    public void onStart(PlayerEntity player, Vocation oldVocation) {
+        if(this != Vocations.NONE)
+            player.sendMessage(Text.translatable("msg.bechacraft.vocation_start").append(this.getDisplayName()));
         
+        onApply(player);
+    }
+
+    public void onStop(PlayerEntity player, Vocation newVocation) {
         for (Map.Entry<EntityAttribute, EntityAttributeModifier> entry : this.attributeModifiers.entrySet()) {
-            EntityAttributeInstance entityAttributeInstance = player.getAttributes().getCustomInstance(entry.getKey());
-            if (entityAttributeInstance == null) continue;
-            entityAttributeInstance.removeModifier(entry.getValue());
+            Util.removeModifier(player, entry.getKey(), entry.getValue());
         }
     }
 
@@ -103,6 +93,10 @@ public class Vocation {
         return id;
     }
 
+    public Map<EntityAttribute, EntityAttributeModifier> getAttributeModifiers() {
+        return this.attributeModifiers;
+    }
+
     protected static String createTranslationKey(String name) {
         return Util.createTranslationKey("vocation", new Identifier(Bechacraft.MOD_ID, name));
     }
@@ -127,6 +121,7 @@ public class Vocation {
 
     public static void set(PlayerEntity player, Vocation vocation) {
         VocationData.set(player, vocation);
+        vocation.onApply(player);
     }
 
     public static void setIfValid(PlayerEntity player, Vocation vocation) {
@@ -138,9 +133,6 @@ public class Vocation {
     public static void onChange(PlayerEntity player, Vocation lastVocation, Vocation newVocation) {
         if(lastVocation != newVocation) {
             lastVocation.onStop(player, newVocation);
-            if(newVocation != Vocations.NONE) {
-                player.sendMessage(Text.translatable("msg.bechacraft.vocation_start").append(newVocation.getDisplayName()));
-            }
             newVocation.onStart(player, lastVocation);
         }
     }
@@ -205,6 +197,10 @@ public class Vocation {
             }
             Bechacraft.LOGGER.warn("Could not set vocation for " + player.getName() + ", of type " + player.getClass().getName());
         }
+
+        public static void seek() {
+            ClientPlayNetworking.send(ModMessages.VOCATION_SEEK_C2S, PacketByteBufs.create());
+        }
         
         public static Vocation get(PlayerEntity player) {
             return read(player);
@@ -219,30 +215,46 @@ public class Vocation {
 
     public static class VocationBuilder {
 
-        String bname;
-        Vocation bparent;
+        String name;
+        Vocation parent;
 
-        boolean bimplemented = true;
-        Map<EntityAttribute, EntityAttributeModifier> battributeModifiers = Maps.newHashMap();
+        boolean implemented = true;
+        Map<EntityAttribute, EntityAttributeModifier> attributeModifiers = Maps.newHashMap();
+
+        boolean inheritsModifiers = true;
 
         public Vocation build() {
-            return new Vocation(bname, bparent, bimplemented, battributeModifiers);
+
+            if(inheritsModifiers)
+                for(Map.Entry<EntityAttribute, EntityAttributeModifier> entry : parent.getAttributeModifiers().entrySet())
+                    this.addAttributeModifier(entry.getKey(), entry.getValue());
+                
+            return new Vocation(name, parent, implemented, attributeModifiers);
         }
 
         public VocationBuilder(String name, Vocation parent) {
-            this.bname = name;
-            this.bparent = parent;
+            this.name = name;
+            this.parent = parent;
         }
 
         public VocationBuilder implemented(boolean b) {
-            this.bimplemented = b;
+            this.implemented = b;
             return this;
         }
 
         public VocationBuilder addAttributeModifier(EntityAttribute attribute, String name, double amount, EntityAttributeModifier.Operation operation) {
             EntityAttributeModifier entityAttributeModifier = new EntityAttributeModifier(name, amount, operation);
-            this.battributeModifiers.put(attribute, entityAttributeModifier);
+            this.addAttributeModifier(attribute, entityAttributeModifier);
             return this;
+        }
+
+        public VocationBuilder inheritsModifiers(boolean b) {
+            this.inheritsModifiers = b;
+            return this;
+        }
+
+        private void addAttributeModifier(EntityAttribute attribute, EntityAttributeModifier modifier) {
+            this.attributeModifiers.put(attribute, modifier);
         }
     }
 }

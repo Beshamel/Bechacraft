@@ -1,0 +1,14 @@
+
+--- Alpha ---
+
+A.1.0 :
+  - Vocation system implemented, with persistent data over death and logout
+  - A few blocks added
+    - Saps & sap extractor
+    - Iridium ore
+    - Citrine and citrine ores
+  - Implemented the Fighter and Traveler vocations
+
+A.1.0.1 :
+  - The fighter now takes normal damage from potion effects, drowning and the void
+  - Impemented the Brute vocation

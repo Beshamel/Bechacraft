@@ -8,7 +8,12 @@
     "ArgumentTypesMixin",
     "ArgumentTypesInvoker",
     "PlayerEntityMixin",
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "LivingEntityAccessor",
+    "PlayerManagerMixin",
+    "ServerPlayerEntityMixin",
+    "ClientPlayNetworkHandlerMixin",
+    "ClientPlayNetworkHandlerAccessor"
   ],
   "client": [
     "TitleScreenMixin"

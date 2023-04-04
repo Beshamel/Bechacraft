@@ -7,9 +7,9 @@ GUI :
     - Graphical design
     - Interface coding
   - Think about custom GUI background designs
+  - Add the vocation icon next to the hotbar
 
 Vocations :
-  - Make unimplemented vocations not appear in command suggestions
   - Update the vocation tree with latest ideas
   - Start implementing simple effects like the farmer's passive
 
@@ -32,8 +32,6 @@ Game design :
   - Think about the cultist vocation tree
   - Add value to some items like copper, diamonds, vegetables...
 
-Troubleshooting :
-  - Assign vocation at login
-
 Translation :
+  - Vocation names
   
