@@ -10,7 +10,6 @@
     "PlayerEntityMixin",
     "LivingEntityMixin",
     "LivingEntityAccessor",
-    "PlayerManagerMixin",
     "ServerPlayerEntityMixin",
     "ClientPlayNetworkHandlerMixin",
     "ClientPlayNetworkHandlerAccessor",

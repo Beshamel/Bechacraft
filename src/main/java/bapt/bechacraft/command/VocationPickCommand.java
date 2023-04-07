@@ -35,7 +35,7 @@ public class VocationPickCommand {
         Vocation newVocation = context.getArgument("vocation", Vocation.class);
         Vocation vocation = Vocation.get(player);
 
-        if(newVocation.getParent() == vocation && newVocation.unlocked(player)) {
+        if(newVocation != vocation && newVocation.unlocked(player)) {
             Vocation.set(player, newVocation);
             return 1;
         } else

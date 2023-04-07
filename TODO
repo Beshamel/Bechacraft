@@ -1,13 +1,12 @@
 GUI :
   - Make the vocation GUI
-    - Graphical design
-    - Keybind
-    - Interface coding
+    - Only declare a click upon release of the button
+    - Add a clicking animation ?
+    - Add tooltips / description / vocation-specific pages
   - Make the mana GUI
     - Graphical design
     - Interface coding
   - Think about custom GUI background designs
-  - Add the vocation icon next to the hotbar
 
 Vocations :
   - Update the vocation tree with latest ideas
@@ -23,11 +22,7 @@ Visual effects :
   - Add particle effects on some interactions
 
 Game design :
-  - Organize the ideas file and merge third parties suggestions
-    - Discord
-      - Tristan (MP)
-      - Guilhem (TIMBG)
-    - Phone
+  - Never forget about third party suggestions
   - Add effects to empty vocations
   - Think about the cultist vocation tree
   - Add value to some items like copper, diamonds, vegetables...
@@ -36,5 +31,3 @@ Translation :
   - Vocation names
 
 Troubleshooting :
-  - Change the PlayerManagerMixin so that the syncing takes place from the client (to make sure it is initialized)
-  

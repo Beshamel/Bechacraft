@@ -69,16 +69,16 @@ public class Vocation {
         }
     }
 
-    public boolean isVisible(PlayerEntity player) {
+    public boolean isVisible() {
         return visible;
     }
 
     public boolean revealed(PlayerEntity player) {
-        return isVisible(player);
+        return isVisible() && Vocation.get(player).getFamily().contains(this);
     }
 
     public boolean unlocked(PlayerEntity player) {
-        return revealed(player);
+        return revealed(player) && (this.parent == Vocation.get(player) || Vocation.get(player).inherits(this));
     }
 
     public Vocation getParent() {
@@ -87,10 +87,10 @@ public class Vocation {
 
     public List<Vocation> getLineage() {
         List<Vocation> lineage = new ArrayList<Vocation>();
+        lineage.add(this);
         if(parent != null) {
             lineage.addAll(parent.getLineage());
         }
-        lineage.add(this);
         return lineage;
     }
 
@@ -261,7 +261,7 @@ public class Vocation {
                 for(Map.Entry<EntityAttribute, EntityAttributeModifier> entry : parent.getAttributeModifiers().entrySet())
                     this.addAttributeModifier(entry.getKey(), entry.getValue());
                 
-            return new Vocation(name, parent, x, y, visible, attributeModifiers);
+            return new Vocation(name, parent, x, y, visible && (parent == null || parent.isVisible()), attributeModifiers);
         }
 
         public VocationBuilder(String name, Vocation parent) {

@@ -65,7 +65,7 @@ public class VocationWidget {
         }
     }
     
-    public boolean isSelected(int mouseX, int mouseY) {
+    public boolean isHovered(int mouseX, int mouseY) {
         int x_ = display.getX() + x - BORDER_WIDTH / 2;
         int y_ = display.getY() + y - BORDER_HEIGHT / 2;
         return Util.isMouseInRect(mouseX, mouseY, x_, y_, BORDER_WIDTH, BORDER_HEIGHT);

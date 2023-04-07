@@ -10,6 +10,7 @@ import net.minecraft.client.util.NarratorManager;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
 
 public class VocationScreen extends Screen {
     private static final Identifier WINDOW_TEXTURE = new Identifier(Bechacraft.MOD_ID, "textures/gui/vocation/window.png");
@@ -53,6 +54,16 @@ public class VocationScreen extends Screen {
         }
         menu.move(deltaX, deltaY);
         return true;
+    }
+
+    @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        if(button == 0) {
+            int i = (this.width - WIDTH) / 2;
+            int j = (this.height - HEIGHT) / 2;
+            menu.trySelect(MathHelper.floor(mouseX), MathHelper.floor(mouseY), i + BACKGROUND_OFFSET_X, j + BACKGROUND_OFFSET_Y, player);
+        }
+        return super.mouseClicked(mouseX, mouseY, button);
     }
 
     public void drawWindow(MatrixStack matrices, int x, int y) {

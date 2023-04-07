@@ -52,6 +52,6 @@ public class VocationArgumentType implements ArgumentType<Vocation> {
     }
 
     private static Stream<String> validArguments(PlayerEntity player) {
-        return Vocation.get(player).getChildren().stream().filter(v -> v.isVisible(player)).map(v -> v.getName());
+        return Vocations.all().stream().filter(v -> v.unlocked(player) && v != Vocation.get(player)).map(v -> v.getName());
     }
 }

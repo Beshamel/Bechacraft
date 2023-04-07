@@ -5,6 +5,7 @@ import java.util.HashMap;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import bapt.bechacraft.Bechacraft;
+import bapt.bechacraft.vocation.Vocation;
 import bapt.bechacraft.vocation.VocationDisplay;
 import bapt.bechacraft.vocation.Vocations;
 import net.minecraft.client.gui.screen.Screen;
@@ -27,7 +28,7 @@ public class VocationMenu {
     public final VocationScreen screen;
     public HashMap<VocationDisplay, VocationWidget> widgets;
     private float alpha;
-    private VocationDisplay lastSelected = null;
+    private VocationDisplay lastHovered = null;
 
     public VocationMenu(VocationScreen screen) {
         this.initialized = false;
@@ -41,14 +42,14 @@ public class VocationMenu {
             initialize(x, y);
         Screen.enableScissor(x, y, x + WIDTH, y + HEIGHT);
         this.drawBackground(matrices, x, y);
-        VocationDisplay voc = this.selectedVocation(matrices, mouseX, mouseY, x, y);
+        VocationDisplay voc = this.hoveredVocation(mouseX, mouseY, x, y);
         if(voc != null)
-            lastSelected = voc;
+            lastHovered = voc;
         this.drawVocationWidgets(matrices, x, y, voc, player);
         Screen.fill(matrices, x, y, x + WIDTH, y + HEIGHT, 0, MathHelper.floor(this.alpha * 255.0f) << 24);
         this.alpha = voc == null ? MathHelper.clamp(this.alpha - 0.04f, 0.0f, 1.0f) : MathHelper.clamp(this.alpha + 0.02f, 0.0f, 0.3f);
-        if(lastSelected != null)
-            widgets.get(lastSelected).render(matrices, x + MathHelper.floor(originX), y + MathHelper.floor(originY), lastSelected, player);
+        if(lastHovered != null)
+            widgets.get(lastHovered).render(matrices, x + MathHelper.floor(originX), y + MathHelper.floor(originY), lastHovered, player);
         Screen.disableScissor();
     }
 
@@ -97,14 +98,23 @@ public class VocationMenu {
         }
     }
 
-    public VocationDisplay selectedVocation(MatrixStack matrices, int mouseX, int mouseY, int x, int y) {
+    public VocationDisplay hoveredVocation(int mouseX, int mouseY, int x, int y) {
         RenderSystem.enableDepthTest();
         for (VocationDisplay display : widgets.keySet()) {
-            if (widgets.get(display).isSelected(mouseX, mouseY))
+            if (widgets.get(display).isHovered(mouseX, mouseY))
                 return display;
         }
         RenderSystem.disableDepthTest();
         return null;
+    }
+
+    public void trySelect(int mouseX, int mouseY, int x, int y, ClientPlayerEntity player) {
+        if(hoveredVocation(mouseX, mouseY, x, y) != null) {
+            Vocation vocation = hoveredVocation(mouseX, mouseY, x, y).getVocation();
+            if(vocation.unlocked(player)) {
+                Vocation.set(player, vocation);
+            }
+        }
     }
 
     public void move(double offsetX, double offsetY) {

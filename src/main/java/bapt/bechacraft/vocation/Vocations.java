@@ -17,8 +17,6 @@ public class Vocations {
     
     public static final Vocation NONE = register(new Vocation("none", null, 0, 0, true, Maps.newHashMap()));
 
-    public static final Vocation BUILDER = register(new VocationBuilder("builder", NONE)/*.shift(70, 20)*/.build());
-    public static final Vocation MAGICIAN = register(new VocationBuilder("magician", NONE).build());
     public static final Vocation CULTIST = register(new VocationBuilder("cultist", NONE).build());
 
     public static final Vocation FARMER = register(new VocationBuilder("farmer", NONE).shift(-50, -50).build());
@@ -60,13 +58,19 @@ public class Vocations {
     public static final Vocation TRADER = register(new VocationBuilder("trader", MERCHANT).shift(0, -40).build());
     public static final Vocation ADVENTURER = register(new VocationBuilder("adventurer", EXPLORATOR).shift(0, -40).build());
 
-    public static final Vocation ENGINEER = createAndRegisterVocation("engineer", BUILDER);
-    public static final Vocation CRAFTMAN = createAndRegisterVocation("craftman", BUILDER);
-    public static final Vocation WIZARD = createAndRegisterVocation("wizard", MAGICIAN);
-    public static final Vocation CHARMER = createAndRegisterVocation("charmer", MAGICIAN);
-    public static final Vocation ALCHEMIST = createAndRegisterVocation("alchemist", MAGICIAN);
-    public static final Vocation MEDIC = createAndRegisterVocation("medic", WIZARD);
-    public static final Vocation FAIRY = createAndRegisterVocation("fairy", CHARMER);
+    public static final Vocation BUILDER = register(new VocationBuilder("builder", NONE)/*.shift(70, 20)*/.build());
+    public static final Vocation ENGINEER = register(new VocationBuilder("engineer", BUILDER).build());
+    public static final Vocation CRAFTMAN = register(new VocationBuilder("craftman", BUILDER).build());
+    public static final Vocation INVENTOR = register(new VocationBuilder("inventor", ENGINEER).build());
+    public static final Vocation ARTISAN = register(new VocationBuilder("artisan", CRAFTMAN).build());
+    public static final Vocation MANUFACTURER = register(new VocationBuilder("manufacturer", CRAFTMAN).build());
+
+    public static final Vocation MAGICIAN = register(new VocationBuilder("magician", NONE).visible(false).build());
+    public static final Vocation WIZARD = register(new VocationBuilder("wizard", MAGICIAN).build());
+    public static final Vocation CHARMER = register(new VocationBuilder("charmer", MAGICIAN).build());
+    public static final Vocation ALCHEMIST = register(new VocationBuilder("alchemist", MAGICIAN).build());
+    public static final Vocation MEDIC = register(new VocationBuilder("medic", WIZARD).build());
+    public static final Vocation FAIRY = register(new VocationBuilder("fairy", CHARMER).build());
     
     private static Vocation register(Vocation vocation) {
         entries.put(vocation.getId(), vocation);

@@ -4,6 +4,11 @@
     "minecraft:wither",
     "minecraft:drown",
     "minecraft:magic",
-    "minecraft:indirect_magic"
+    "minecraft:indirect_magic",
+    "minecraft:in_fire",
+    "minecraft:on_fire",
+    "minecraft:lava",
+    "minecraft:hot_floor",
+    "minecraft:fireball"
   ]
 }
