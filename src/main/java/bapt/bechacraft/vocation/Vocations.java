@@ -15,45 +15,58 @@ public class Vocations {
 
     private static HashMap<Identifier, Vocation> entries = Maps.newHashMap();
     
-    public static final Vocation NONE = createAndRegisterVocation("none", null);
-    public static final Vocation FARMER = createAndRegisterVocation("farmer", NONE);
-    public static final Vocation MINER = createAndRegisterVocation("miner", NONE);
-    public static final Vocation TRAVELER = register(new VocationBuilder("traveler", NONE).addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, "traveler_speed_modifier", 0.1, Operation.MULTIPLY_TOTAL).build());
-    public static final Vocation BUILDER = createAndRegisterVocation("builder", NONE);
-    public static final Vocation FIGHTER = register(new VocationBuilder("fighter", NONE).addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, "fighter_attack_modifier", 1, Operation.ADDITION).build());
-    public static final Vocation MAGICIAN = register(new VocationBuilder("magician", NONE).implemented(false).build());
-    public static final Vocation CULTIST = register(new VocationBuilder("cultist", NONE).implemented(false).build());
-    public static final Vocation BREEDER = createAndRegisterVocation("breeder", FARMER);
-    public static final Vocation FISHER = createAndRegisterVocation("fisher", FARMER);
-    public static final Vocation LUMBERJACK = createAndRegisterVocation("lumberjack", FARMER);
-    public static final Vocation TILLER = createAndRegisterVocation("tiller", FARMER);
-    public static final Vocation GEOLOGIST = createAndRegisterVocation("geologist", MINER);
-    public static final Vocation BLACKSMITH = createAndRegisterVocation("blacksmith", MINER);
-    public static final Vocation EXPLORATOR = register(new VocationBuilder("explorator", TRAVELER).build());
-    public static final Vocation MERCHANT = register(new VocationBuilder("merchant", TRAVELER).build());
-    public static final Vocation ADVENTURER = register(new VocationBuilder("adventurer", TRAVELER).build());
-    public static final Vocation SAILOR = createAndRegisterVocation("sailor", TRAVELER);
+    public static final Vocation NONE = register(new Vocation("none", null, 0, 0, true, Maps.newHashMap()));
+
+    public static final Vocation BUILDER = register(new VocationBuilder("builder", NONE)/*.shift(70, 20)*/.build());
+    public static final Vocation MAGICIAN = register(new VocationBuilder("magician", NONE).build());
+    public static final Vocation CULTIST = register(new VocationBuilder("cultist", NONE).build());
+
+    public static final Vocation FARMER = register(new VocationBuilder("farmer", NONE).shift(-50, -50).build());
+    public static final Vocation BREEDER = register(new VocationBuilder("breeder", FARMER).shift(-50, -60).build());
+    public static final Vocation FISHER = register(new VocationBuilder("fisher", FARMER).shift(-10, -60).build());
+    public static final Vocation LUMBERJACK = register(new VocationBuilder("lumberjack", FARMER).shift(-80, -30).build());
+    public static final Vocation TILLER = register(new VocationBuilder("tiller", FARMER).shift(-80, 0).build());
+    public static final Vocation MILLER = register(new VocationBuilder("miller", FARMER).shift(30, -60).build());
+    public static final Vocation SHEPHERD = register(new VocationBuilder("shepherd", BREEDER).shift(-50, -20).build());
+    public static final Vocation RANCHER = register(new VocationBuilder("rancher", BREEDER).shift(0, -40).build());
+    public static final Vocation ANGLER = register(new VocationBuilder("angler", FISHER).shift(0, -40).build());
+    public static final Vocation BOTANIST = register(new VocationBuilder("botanist", TILLER).shift(-50, 0).build());
+    public static final Vocation GATHERER = register(new VocationBuilder("gatherer", LUMBERJACK).shift(-50, 0).build());
+    public static final Vocation BAKER = register(new VocationBuilder("baker", MILLER).shift(0, -40).build());
+
+    public static final Vocation MINER = register(new VocationBuilder("miner", NONE).shift(0, 70).build());
+    public static final Vocation GEOLOGIST = register(new VocationBuilder("geologist", MINER).shift(-40, 40).build());
+    public static final Vocation BLACKSMITH = register(new VocationBuilder("blacksmith", MINER).shift(20, 40).build());
+    public static final Vocation CRYSTALLOGRAPHER = register(new VocationBuilder("crystallographer", GEOLOGIST).shift(0, 40).build());
+    public static final Vocation WEAPONSMITH = register(new VocationBuilder("weaponsmith", BLACKSMITH).shift(20, 40).build());
+    public static final Vocation ARMORER = register(new VocationBuilder("armorer", BLACKSMITH).shift(-20, 40).build());
+
+    public static final Vocation FIGHTER = register(new VocationBuilder("fighter", NONE).shift(-70, 20).addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, "fighter_attack_modifier", 1, Operation.ADDITION).build());
+    public static final Vocation MARKSMAN = register(new VocationBuilder("marksman", FIGHTER).shift(-80, -15).build());
+    public static final Vocation WARRIOR = register(new VocationBuilder("warrior", FIGHTER).shift(-80, 30).build());
+    public static final Vocation ASSASSIN = register(new VocationBuilder("assassin", FIGHTER).shift(-50, 70).build());
+    public static final Vocation BRUTE = register(new VocationBuilder("brute", WARRIOR).shift(-50, 0).addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, "brute_attack_modifier", 1, Operation.MULTIPLY_TOTAL).inheritsModifiers(false).build());
+    public static final Vocation HUNTER = register(new VocationBuilder("hunter", MARKSMAN).shift(-50, -15).build());
+    public static final Vocation SNIPER = register(new VocationBuilder("sniper", MARKSMAN).shift(-50, 15).build());
+    public static final Vocation LURKER = register(new VocationBuilder("lurker", ASSASSIN).shift(-50, 0).build());
+    public static final Vocation NINJA = register(new VocationBuilder("ninja", ASSASSIN).shift(-20, 40).build());
+    public static final Vocation BOUNTY_HUNTER = register(new VocationBuilder("bounty_hunter", ASSASSIN).shift(20, 40).build());
+
+    public static final Vocation TRAVELER = register(new VocationBuilder("traveler", NONE).shift(50, -50).addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, "traveler_speed_modifier", 0.1, Operation.MULTIPLY_TOTAL).build());
+    public static final Vocation EXPLORATOR = register(new VocationBuilder("explorator", TRAVELER).shift(0, -60).build());
+    public static final Vocation MERCHANT = register(new VocationBuilder("merchant", TRAVELER).shift(40, -60).build());
+    public static final Vocation SAILOR = register(new VocationBuilder("sailor", TRAVELER).shift(80, -60).build());
+    public static final Vocation ATLANT = register(new VocationBuilder("atlant", SAILOR).shift(0, -40).build());
+    public static final Vocation TRADER = register(new VocationBuilder("trader", MERCHANT).shift(0, -40).build());
+    public static final Vocation ADVENTURER = register(new VocationBuilder("adventurer", EXPLORATOR).shift(0, -40).build());
+
     public static final Vocation ENGINEER = createAndRegisterVocation("engineer", BUILDER);
     public static final Vocation CRAFTMAN = createAndRegisterVocation("craftman", BUILDER);
-    public static final Vocation MARKSMAN = createAndRegisterVocation("marksman", FIGHTER);
-    public static final Vocation WARRIOR = createAndRegisterVocation("warrior", FIGHTER);
-    public static final Vocation HUNTER = createAndRegisterVocation("hunter", FIGHTER);
-    public static final Vocation ASSASSIN = createAndRegisterVocation("assassin", FIGHTER);
     public static final Vocation WIZARD = createAndRegisterVocation("wizard", MAGICIAN);
     public static final Vocation CHARMER = createAndRegisterVocation("charmer", MAGICIAN);
     public static final Vocation ALCHEMIST = createAndRegisterVocation("alchemist", MAGICIAN);
-    public static final Vocation SHEPHERD = createAndRegisterVocation("shepherd", BREEDER);
-    public static final Vocation ANGLER = createAndRegisterVocation("angler", FISHER);
-    public static final Vocation BOTANIST = createAndRegisterVocation("botanist", TILLER);
-    public static final Vocation GATHERER = createAndRegisterVocation("gatherer", LUMBERJACK);
-    public static final Vocation CRYSTALLOGRAPHER = createAndRegisterVocation("crystallographer", GEOLOGIST);
-    public static final Vocation WEAPONSMITH = createAndRegisterVocation("weaponmaster", BLACKSMITH);
-    public static final Vocation ARMORER = createAndRegisterVocation("armorer", BLACKSMITH);
     public static final Vocation MEDIC = createAndRegisterVocation("medic", WIZARD);
-    public static final Vocation ATLANT = createAndRegisterVocation("sailor", SAILOR);
     public static final Vocation FAIRY = createAndRegisterVocation("fairy", CHARMER);
-    public static final Vocation TRADER = createAndRegisterVocation("trader", MERCHANT);
-    public static final Vocation BRUTE = register(new VocationBuilder("brute", WARRIOR).addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, "brute_attack_modifier", 1, Operation.MULTIPLY_TOTAL).inheritsModifiers(false).build());
     
     private static Vocation register(Vocation vocation) {
         entries.put(vocation.getId(), vocation);

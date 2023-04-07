@@ -30,4 +30,8 @@ public class Util {
         if (entityAttributeInstance == null) return;
         entityAttributeInstance.removeModifier(modifier);
     }
+
+    public static boolean isMouseInRect(int mouseX, int mouseY, int i, int j, int w, int h) {
+        return i <= mouseX && mouseX < i + w && j <= mouseY && mouseY < j + h;
+    }
 }

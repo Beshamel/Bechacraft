@@ -34,4 +34,7 @@ Game design :
 
 Translation :
   - Vocation names
+
+Troubleshooting :
+  - Change the PlayerManagerMixin so that the syncing takes place from the client (to make sure it is initialized)
   

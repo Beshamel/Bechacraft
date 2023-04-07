@@ -13,7 +13,8 @@
     "PlayerManagerMixin",
     "ServerPlayerEntityMixin",
     "ClientPlayNetworkHandlerMixin",
-    "ClientPlayNetworkHandlerAccessor"
+    "ClientPlayNetworkHandlerAccessor",
+    "MinecraftClientMixin"
   ],
   "client": [
     "TitleScreenMixin"

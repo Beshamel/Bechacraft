@@ -62,6 +62,8 @@
   "vocation.bechacraft.spellmaster": "Spellmaster",
   "vocation.bechacraft.healer": "Healer",
 
+  "vocation_screen.bechacraft.title": "Vocations",
+
   "msg.becharcaft.vocation_info_name": "Your vocation is",
   "msg.bechacraft.no_vocation_yet": "You don't have a vocation yet, press V or type '/vocation menu' to open the vocation menu",
   "msg.bechacraft.vocation_start": "Your vocation is now : ",

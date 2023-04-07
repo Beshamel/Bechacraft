@@ -27,27 +27,27 @@ public class Vocation {
 
     private static final String ICON_PATH_PREFIX = "textures/vocation/";
 
-    private final boolean implemented;
+    private final boolean visible;
 
     private final String name;
     private final Identifier id;
-    private Identifier iconId;
+    private VocationDisplay display;
     private final Vocation parent;
     private final Map<EntityAttribute, EntityAttributeModifier> attributeModifiers;
-    private String translationKey;
 
     public Vocation(String name, Vocation parent) {
-        this(name, parent, true, Maps.newHashMap());
+        this(name, parent, 0, 0, false, Maps.newHashMap());
     }
 
-    private Vocation(String name, Vocation parent, boolean implemented, Map<EntityAttribute, EntityAttributeModifier> attributeModifiers) {
-        this.implemented = implemented;
+    public Vocation(String name, Vocation parent, int x, int y, boolean visible, Map<EntityAttribute, EntityAttributeModifier> attributeModifiers) {
+        this.visible = visible;
         this.name = name;
-        this.iconId = new Identifier(Bechacraft.MOD_ID, ICON_PATH_PREFIX + name + ".png");
+        Identifier iconId = new Identifier(Bechacraft.MOD_ID, ICON_PATH_PREFIX + name + ".png");
         this.parent = parent;
         this.id = new Identifier(Bechacraft.MOD_ID, name);
-        this.translationKey = createTranslationKey(name);
+        String translationKey = createTranslationKey(name);
         this.attributeModifiers = attributeModifiers;
+        this.display = new VocationDisplay(this, iconId, translationKey, x, y, visible);
     }
 
     public void onApply(PlayerEntity player) {
@@ -58,7 +58,7 @@ public class Vocation {
 
     public void onStart(PlayerEntity player, Vocation oldVocation) {
         if(this != Vocations.NONE)
-            player.sendMessage(Text.translatable("msg.bechacraft.vocation_start").append(this.getDisplayName()));
+            player.sendMessage(Text.translatable("msg.bechacraft.vocation_start").append(display.getDisplayName()));
         
         onApply(player);
     }
@@ -70,31 +70,54 @@ public class Vocation {
     }
 
     public boolean isVisible(PlayerEntity player) {
-        return implemented;
+        return visible;
+    }
+
+    public boolean revealed(PlayerEntity player) {
+        return isVisible(player);
     }
 
     public boolean unlocked(PlayerEntity player) {
-        return isVisible(player);
+        return revealed(player);
     }
 
     public Vocation getParent() {
         return parent;
     }
 
-    public String getName() {
-        return name;
+    public List<Vocation> getLineage() {
+        List<Vocation> lineage = new ArrayList<Vocation>();
+        if(parent != null) {
+            lineage.addAll(parent.getLineage());
+        }
+        lineage.add(this);
+        return lineage;
     }
 
-    public Text getDisplayName() {
-        return Text.translatable(this.getTranslationKey());
+    public List<Vocation> getFamily() {
+        List<Vocation> lineage = getLineage();
+        List<Vocation> family = new ArrayList<Vocation>();
+        family.addAll(lineage);
+        for(Vocation voc : lineage) {
+            for(Vocation c : voc.getChildren()) {
+                if(!family.contains(c)) {
+                    family.add(c);
+                }
+            }
+        }
+        return family;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Identifier getId() {
         return id;
     }
 
-    public Identifier getIcon() {
-        return iconId;
+    public VocationDisplay getDisplay() {
+        return display;
     }
 
     public Map<EntityAttribute, EntityAttributeModifier> getAttributeModifiers() {
@@ -103,10 +126,6 @@ public class Vocation {
 
     protected static String createTranslationKey(String name) {
         return Util.createTranslationKey("vocation", new Identifier(Bechacraft.MOD_ID, name));
-    }
-
-    public String getTranslationKey() {
-        return this.translationKey;
     }
 
     public List<Vocation> getChildren() {
@@ -124,7 +143,7 @@ public class Vocation {
     }
 
     public int getTier() {
-        return parent == null ? 1 : (parent.getTier() + 1);
+        return parent == null ? 0 : (parent.getTier() + 1);
     }
 
     public static void set(PlayerEntity player, Vocation vocation) {
@@ -163,7 +182,7 @@ public class Vocation {
         if(vocation == Vocations.NONE)
             player.sendMessage(Text.translatable("msg.bechacraft.no_vocation_yet"));
         else
-            player.sendMessage(Text.translatable("msg.becharcaft.vocation_info_name").append(" : ").append(vocation.getDisplayName()));
+            player.sendMessage(Text.translatable("msg.becharcaft.vocation_info_name").append(" : ").append(vocation.getDisplay().getDisplayName()));
     }
 
     public class VocationData {
@@ -171,6 +190,7 @@ public class Vocation {
         public static String KEY = "vocation";
 
         public static void write(IEntityDataSaver player, Vocation vocation) {
+            if(player == null) return;
             NbtCompound nbt = player.getPersistentData();
             nbt.putString(KEY, vocation.getName());
         }
@@ -180,6 +200,7 @@ public class Vocation {
         }
 
         public static Vocation read(IEntityDataSaver player) {
+            if(player == null) return Vocations.NONE;
             NbtCompound nbt = player.getPersistentData();
             Vocation vocation = Vocations.fromName(nbt.getString(KEY));
             return vocation == null ? Vocations.NONE : vocation;
@@ -194,7 +215,7 @@ public class Vocation {
                 Vocation lastVocation = read(player);
                 write(player, vocation);
                 onChange(player, lastVocation, vocation);
-                sync((ServerPlayerEntity) player, vocation);
+                sync((ServerPlayerEntity) player);
                 return;
             }
             if(player instanceof ClientPlayerEntity) {
@@ -214,9 +235,10 @@ public class Vocation {
             return read(player);
         }
 
-        public static void sync(ServerPlayerEntity player, Vocation vocation) {
+        public static void sync(ServerPlayerEntity player) {
             PacketByteBuf buffer = PacketByteBufs.create();
             buffer.writeString(read(player).getName());
+            read(player).onApply(player);
             ServerPlayNetworking.send(player, ModMessages.VOCATION_SYNC_S2C, buffer);
         }
     }
@@ -226,8 +248,10 @@ public class Vocation {
         String name;
         Vocation parent;
 
-        boolean implemented = true;
+        boolean visible = false;
         Map<EntityAttribute, EntityAttributeModifier> attributeModifiers = Maps.newHashMap();
+        int x = 0;
+        int y = 0;
 
         boolean inheritsModifiers = true;
 
@@ -237,7 +261,7 @@ public class Vocation {
                 for(Map.Entry<EntityAttribute, EntityAttributeModifier> entry : parent.getAttributeModifiers().entrySet())
                     this.addAttributeModifier(entry.getKey(), entry.getValue());
                 
-            return new Vocation(name, parent, implemented, attributeModifiers);
+            return new Vocation(name, parent, x, y, visible, attributeModifiers);
         }
 
         public VocationBuilder(String name, Vocation parent) {
@@ -245,8 +269,8 @@ public class Vocation {
             this.parent = parent;
         }
 
-        public VocationBuilder implemented(boolean b) {
-            this.implemented = b;
+        public VocationBuilder visible(boolean b) {
+            this.visible = b;
             return this;
         }
 
@@ -259,6 +283,21 @@ public class Vocation {
         public VocationBuilder inheritsModifiers(boolean b) {
             this.inheritsModifiers = b;
             return this;
+        }
+
+        public VocationBuilder displayAt(int x, int y) {
+            visible = true;
+            this.x = x;
+            this.y = y;
+            return this;
+        }
+
+        public VocationBuilder shift(Vocation vocation, int x, int y) {
+            return displayAt(vocation.getDisplay().getX() + x, vocation.getDisplay().getY() + y);
+        }
+
+        public VocationBuilder shift(int x, int y) {
+            return shift(parent, x, y);
         }
 
         private void addAttributeModifier(EntityAttribute attribute, EntityAttributeModifier modifier) {

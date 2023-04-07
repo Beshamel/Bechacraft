@@ -10,6 +10,6 @@ import net.minecraft.server.network.ServerPlayerEntity;
 public class VocationSeekC2SPacket {
     
     public static void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
-        VocationData.sync(player, VocationData.get(player));
+        VocationData.sync(player);
     }
 }

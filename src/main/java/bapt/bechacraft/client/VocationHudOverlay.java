@@ -29,7 +29,7 @@ public class VocationHudOverlay implements HudRenderCallback {
         RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
         Vocation vocation = Vocation.get(client.player);
         if(vocation != Vocations.NONE) {
-            RenderSystem.setShaderTexture(0, vocation.getIcon());
+            RenderSystem.setShaderTexture(0, vocation.getDisplay().getIcon());
             DrawableHelper.drawTexture(matrixStack, x + 96, y - 19, 0, 0, 24, 16, 24, 16);
         }
     }

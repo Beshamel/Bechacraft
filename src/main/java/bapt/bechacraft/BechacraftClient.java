@@ -18,5 +18,6 @@ public class BechacraftClient implements ClientModInitializer {
         ModMessages.registerS2CPackets();
 
         HudRenderCallback.EVENT.register(new VocationHudOverlay());
+        
     }
 }
