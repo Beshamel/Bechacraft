@@ -16,12 +16,12 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-public class ModSapItem
+public class SapItem
 extends Item {
 
     private static final int MAX_USE_TIME = 40;
 
-    public ModSapItem(Item.Settings settings) {
+    public SapItem(Item.Settings settings) {
         super(settings);
     }
 

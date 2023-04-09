@@ -8,6 +8,8 @@ import bapt.bechacraft.block.ModBlocks;
 import bapt.bechacraft.block.entity.ModBlockEntities;
 import bapt.bechacraft.command.ModCommands;
 import bapt.bechacraft.effect.ModStatusEffects;
+import bapt.bechacraft.entity.ModEntityRenderers;
+import bapt.bechacraft.entity.ModEntityTypes;
 import bapt.bechacraft.item.ModItemGroup;
 import bapt.bechacraft.item.ModItems;
 import bapt.bechacraft.networking.ModMessages;
@@ -34,6 +36,8 @@ public class Bechacraft implements ModInitializer {
 		ModRecipes.registerRecipes();
 		ModCommands.registerCommands();
 		ModMessages.registerC2SPackets();
+		ModEntityTypes.registerEntityTypes();
+		ModEntityRenderers.registerRenderers();
 
 		LOGGER.info(MOD_NAME + " has initialized succesfully !");
 	}

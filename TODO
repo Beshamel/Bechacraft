@@ -13,10 +13,12 @@ Vocations :
   - Start implementing simple effects like the farmer's passive
 
 Game elements :
+  - Give the shuriken its own damage type and sound design (For now it is inherited from PersistentProjectileEntity)
   - Add custom crops
   - Add custom weapons
   - Add the custom block designs
   - Add the End biome and petrified tree generation and wood family
+  - Stardew Valley fishing !
 
 Visual effects :
   - Add particle effects on some interactions

@@ -13,7 +13,8 @@
     "ServerPlayerEntityMixin",
     "ClientPlayNetworkHandlerMixin",
     "ClientPlayNetworkHandlerAccessor",
-    "MinecraftClientMixin"
+    "MinecraftClientMixin",
+    "EntityRenderersInvoker"
   ],
   "client": [
     "TitleScreenMixin"

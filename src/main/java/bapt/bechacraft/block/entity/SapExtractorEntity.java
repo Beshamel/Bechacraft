@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import bapt.bechacraft.item.ModItems;
-import bapt.bechacraft.item.custom.ModSapItem;
+import bapt.bechacraft.item.custom.SapItem;
 import bapt.bechacraft.property.ModProperties;
 import bapt.bechacraft.recipe.SapExtractingRecipe;
 import bapt.bechacraft.screen.SapExtractorScreenHandler;
@@ -210,7 +210,7 @@ public class SapExtractorEntity extends BlockEntity implements NamedScreenHandle
     }
 
     private void fill() {
-        setStack(2, new ItemStack(ModSapItem.fromExtractionType(sapType)));
+        setStack(2, new ItemStack(SapItem.fromExtractionType(sapType)));
         tank = 0;
         sapType = 0;
     }

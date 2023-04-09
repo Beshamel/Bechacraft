@@ -1,7 +1,10 @@
 package bapt.bechacraft.item;
 
+import java.util.List;
+
 import bapt.bechacraft.Bechacraft;
-import bapt.bechacraft.item.custom.ModSapItem;
+import bapt.bechacraft.item.custom.SapItem;
+import bapt.bechacraft.item.custom.ShurikenItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
@@ -14,29 +17,38 @@ import net.minecraft.util.Identifier;
 
 public class ModItems {
 
-    public static final Item CITRINE = registerItem("citrine", new Item(new FabricItemSettings()));
-    public static final Item RAW_CITRINE = registerItem("raw_citrine", new Item(new FabricItemSettings()));
+    public static final Item CITRINE = registerItem("citrine", new Item(new FabricItemSettings()), List.of(ModItemGroup.BECHACRAFT, ItemGroups.INGREDIENTS));
+    public static final Item RAW_CITRINE = registerItem("raw_citrine", new Item(new FabricItemSettings()), List.of(ModItemGroup.BECHACRAFT, ItemGroups.INGREDIENTS));
 
-    public static final Item WOOD_SAP = registerItem("wood_sap", new ModSapItem(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).food(ModFoodComponents.WOOD_SAP).maxCount(16)));
-    public static final Item RED_SAP = registerItem("red_sap", new ModSapItem(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).food(ModFoodComponents.RED_SAP).maxCount(16)));
-    public static final Item BLUE_SAP = registerItem("blue_sap", new ModSapItem(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).food(ModFoodComponents.BLUE_SAP).maxCount(16)));
-    public static final Item CHORUS_SAP = registerItem("chorus_sap", new ModSapItem(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).food(ModFoodComponents.CHORUS_SAP).maxCount(16)));
+    public static final Item WOOD_SAP = registerItem("wood_sap", new SapItem(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).food(ModFoodComponents.WOOD_SAP).maxCount(16)), List.of(ModItemGroup.BECHACRAFT, ItemGroups.INGREDIENTS));
+    public static final Item RED_SAP = registerItem("red_sap", new SapItem(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).food(ModFoodComponents.RED_SAP).maxCount(16)), List.of(ModItemGroup.BECHACRAFT, ItemGroups.INGREDIENTS));
+    public static final Item BLUE_SAP = registerItem("blue_sap", new SapItem(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).food(ModFoodComponents.BLUE_SAP).maxCount(16)), List.of(ModItemGroup.BECHACRAFT, ItemGroups.INGREDIENTS));
+    public static final Item CHORUS_SAP = registerItem("chorus_sap", new SapItem(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).food(ModFoodComponents.CHORUS_SAP).maxCount(16)), List.of(ModItemGroup.BECHACRAFT, ItemGroups.INGREDIENTS));
+
+    public static final Item SHURIKEN = registerItem("shuriken", new ShurikenItem(new FabricItemSettings()), List.of(ModItemGroup.BECHACRAFT, ItemGroups.COMBAT));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Bechacraft.MOD_ID, name), item);
     }
 
-    public static void addItemsToItemGroup() {
+    private static Item registerItem(String name, Item item, List<ItemGroup> groups) {
+        for(ItemGroup group : groups)
+            addToItemGroup(group, item);
+        return Registry.register(Registries.ITEM, new Identifier(Bechacraft.MOD_ID, name), item);
+    }
+
+    /*public static void addItemsToItemGroup() {
         addToItemGroup(ModItemGroup.BECHACRAFT, CITRINE);
         addToItemGroup(ModItemGroup.BECHACRAFT, RAW_CITRINE);
         addToItemGroup(ModItemGroup.BECHACRAFT, WOOD_SAP);
         addToItemGroup(ModItemGroup.BECHACRAFT, RED_SAP);
         addToItemGroup(ModItemGroup.BECHACRAFT, BLUE_SAP);
         addToItemGroup(ModItemGroup.BECHACRAFT, CHORUS_SAP);
+        addToItemGroup(ModItemGroup.BECHACRAFT, SHURIKEN);
 
         addToItemGroup(ItemGroups.INGREDIENTS, CITRINE);
         addToItemGroup(ItemGroups.INGREDIENTS, RAW_CITRINE);
-    }
+    }*/
 
     private static void addToItemGroup(ItemGroup group, Item item) {
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
@@ -44,8 +56,6 @@ public class ModItems {
 
     public static void registerModItems() {
         Bechacraft.LOGGER.info("Registering items for " + Bechacraft.MOD_NAME);
-
-        addItemsToItemGroup();
     }
 
 }
