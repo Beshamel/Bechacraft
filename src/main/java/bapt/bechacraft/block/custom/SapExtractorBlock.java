@@ -78,8 +78,8 @@ public class SapExtractorBlock extends BlockWithEntity {
                 ItemScatterer.spawn(world, pos, (SapExtractorEntity) blockEntity);
                 world.updateComparators(pos, this);
             }
-            ((AbstractBlockState) state).onStateReplaced(world, pos, newState, moved);
         }
+        super.onStateReplaced(state, world, pos, newState, moved);
     }
 
     @Override

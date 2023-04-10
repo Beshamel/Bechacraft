@@ -13,7 +13,12 @@ Vocations :
   - Start implementing simple effects like the farmer's passive
 
 Game elements :
-  - Give the shuriken its own damage type and sound design (For now it is inherited from PersistentProjectileEntity)
+  - Work on the shuriken's design
+    - Give the shuriken its own damage type and sound design (For now it is inherited from PersistentProjectileEntity) (use Jett's knives for the throwing sound ? Akali's shuriken for the traveling ?)
+  - Work on the katana's design
+    - Change the model for it to be longer, and make the item's texture go upwards
+    - Add the necessary LivingEntity methods to give the katana's blocking effect its own sound and allow ninjas only to block projectiles
+    - Make it impossible to use the second hand item while using the katana (should be done by using the katana's blocking instead)
   - Add custom crops
   - Add custom weapons
   - Add the custom block designs
@@ -30,6 +35,5 @@ Game design :
   - Add value to some items like copper, diamonds, vegetables...
 
 Translation :
-  - Vocation names
 
 Troubleshooting :

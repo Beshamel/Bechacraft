@@ -29,3 +29,7 @@ A.1.3.1
 A.1.4
   - Refactoring
   - Added shuriken, and the ninja's passive related to them
+
+A.1.4.1
+  - Fixed a bug where breaking a sap extractor would crash the game
+  - Added the katana item, it behaves like a simple sword, feature still to be worked on

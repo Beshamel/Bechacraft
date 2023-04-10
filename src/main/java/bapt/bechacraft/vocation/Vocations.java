@@ -81,13 +81,13 @@ public class Vocations {
         Bechacraft.LOGGER.info("Loaded {} vocations", entries.size());
     }
     
-    private static Vocation createAndRegisterVocation(String name, Vocation parent) {
+    /*private static Vocation createAndRegisterVocation(String name, Vocation parent) {
         if(parent == null)
             return register(new Vocation(name, parent));
         
         Vocation vocation = new VocationBuilder(name, parent).build();
         return register(vocation);
-    }
+    }*/
 
     public static Collection<Vocation> all() {
         return entries.values();

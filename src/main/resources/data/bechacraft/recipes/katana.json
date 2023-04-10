@@ -4,15 +4,18 @@
   "key": {
     "#": {
       "item": "minecraft:iron_ingot"
+    },
+    "/": {
+      "item": "minecraft:stick"
     }
   },
   "pattern": [
+    "  #",
     " # ",
-    "###",
-    " # "
+    "/  "
   ],
   "result": {
-    "item": "bechacraft:shuriken",
+    "item": "bechacraft:katana",
     "count": 8
   }
 }
