@@ -41,19 +41,6 @@ public class ModItems {
         return Registry.register(Registries.ITEM, new Identifier(Bechacraft.MOD_ID, name), item);
     }
 
-    /*public static void addItemsToItemGroup() {
-        addToItemGroup(ModItemGroup.BECHACRAFT, CITRINE);
-        addToItemGroup(ModItemGroup.BECHACRAFT, RAW_CITRINE);
-        addToItemGroup(ModItemGroup.BECHACRAFT, WOOD_SAP);
-        addToItemGroup(ModItemGroup.BECHACRAFT, RED_SAP);
-        addToItemGroup(ModItemGroup.BECHACRAFT, BLUE_SAP);
-        addToItemGroup(ModItemGroup.BECHACRAFT, CHORUS_SAP);
-        addToItemGroup(ModItemGroup.BECHACRAFT, SHURIKEN);
-
-        addToItemGroup(ItemGroups.INGREDIENTS, CITRINE);
-        addToItemGroup(ItemGroups.INGREDIENTS, RAW_CITRINE);
-    }*/
-
     private static void addToItemGroup(ItemGroup group, Item item) {
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
     }

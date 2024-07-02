@@ -85,5 +85,8 @@
   "msg.bechacraft.reset_vocation_success": "Your vocation was reset succesfully",
 
   "key.category.bechacraft": "Béchacraft",
-  "key.bechacraft.open_vocation_menu": "Open vocation menu"
+  "key.bechacraft.open_vocation_menu": "Open vocation menu",
+
+  "sounds.bechacraft.entity_shuriken_throw": "Shuriken thrown",
+  "sounds.bechacraft.entity_shuriken_hit": "Shuriken hit"
 }

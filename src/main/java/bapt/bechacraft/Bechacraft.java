@@ -15,10 +15,11 @@ import bapt.bechacraft.item.ModItems;
 import bapt.bechacraft.networking.ModMessages;
 import bapt.bechacraft.recipe.ModRecipes;
 import bapt.bechacraft.screen.ModScreenHandlers;
+import bapt.bechacraft.sound.ModSounds;
 import bapt.bechacraft.vocation.Vocations;
 
 public class Bechacraft implements ModInitializer {
-	
+
 	public static final String MOD_ID = "bechacraft";
 	public static final String MOD_NAME = "Béchacraft";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
@@ -36,6 +37,7 @@ public class Bechacraft implements ModInitializer {
 		ModRecipes.registerRecipes();
 		ModCommands.registerCommands();
 		ModMessages.registerC2SPackets();
+		ModSounds.registerSoundEvents();
 		ModEntityTypes.registerEntityTypes();
 		ModEntityRenderers.registerRenderers();
 

@@ -19,6 +19,8 @@ Game elements :
     - Change the model for it to be longer, and make the item's texture go upwards
     - Add the necessary LivingEntity methods to give the katana's blocking effect its own sound and allow ninjas only to block projectiles
     - Make it impossible to use the second hand item while using the katana (should be done by using the katana's blocking instead)
+  - Finish the sap extractor implementation
+    - Add sided inputs/outputs handling
   - Add custom crops
   - Add custom weapons
   - Add the custom block designs

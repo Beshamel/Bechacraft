@@ -10,10 +10,11 @@
     "PlayerEntityMixin",
     "LivingEntityMixin",
     "LivingEntityAccessor",
-    "PlayerManagerMixin",
     "ServerPlayerEntityMixin",
     "ClientPlayNetworkHandlerMixin",
-    "ClientPlayNetworkHandlerAccessor"
+    "ClientPlayNetworkHandlerAccessor",
+    "MinecraftClientMixin",
+    "EntityRenderersInvoker"
   ],
   "client": [
     "TitleScreenMixin"
