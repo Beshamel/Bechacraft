@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "front": "bechacraft:block/sap_extractor_front_lit_filling_chorus",
-    "side": "bechacraft:block/sap_extractor_side",
-    "top": "bechacraft:block/sap_extractor_top"
-  }
-}
